@@ -6,14 +6,13 @@
 <div class="container">
     <div class="contain-header-title">
         <h1 class="new-mark">Add New Marker</h1>
-        <a href="#" class="btn btn-success edit-mark">Edit Marker</a>
+        <a href="Editmarker.php" class="btn btn-success edit-mark">Edit Marker</a>
     </div>
 </div>
 <hr>
 <div class="container">
     <div class="form_wrapper">
     <div class="form_container">
-        <div class="">
             <form>
             <div class="input_field select_option">
                     <select >
@@ -71,7 +70,7 @@
                         </div>
                         <div>
                         <input type="file" class="upload-img" name="" id="userFile1">
-                        <label for="userFile1">Add File</label>
+                        <label for="userFile1">Add photo</label>
                         <span class="closeStyle removeFile"></span>
                         </div>
                     </div>
@@ -92,7 +91,7 @@
                         </div>
                         <div>
                         <input type="file" class="upload-img" name="" id="userFile4">
-                        <label for="userFile4">Add File</label>
+                        <label for="userFile4">Add photo</label>
                         <span class="closeStyle removeFile"></span>
                         </div>
                     </div>
@@ -113,7 +112,7 @@
                         </div>
                         <div>
                         <input type="file" class="upload-img" name="" id="userFile5">
-                        <label for="userFile5">Add File</label>
+                        <label for="userFile5">Add photo</label>
                         <span class="closeStyle removeFile"></span>
                         </div>
                     </div>
@@ -134,7 +133,49 @@
                         </div>
                         <div>
                         <input type="file" class="upload-img" name="" id="userFile6">
-                        <label for="userFile6">Add File</label>
+                        <label for="userFile6">Add photo</label>
+                        <span class="closeStyle removeFile"></span>
+                        </div>
+                    </div>
+                    </li>
+                    <li>
+                    <div class="upld-list">
+                        <div class="upd-iconName">
+                        <span class="uploaded-icon">
+                            <svg viewBox="-448.5 266.5 28.9 29">
+                            <use xlink:href="#upload-svg"></use>
+                            </svg>
+                        </span>
+                        <div>
+                            <span class="docName">Five photo</span>
+                            <div class="docType"><span class="fileName"></span> <i class="mdot"></i><span class="fileSize"></span></div>
+                            <div class="msg"></div>
+                        </div>
+                        </div>
+                        <div>
+                        <input type="file" class="upload-img" name="" id="userFile6">
+                        <label for="userFile6">Add photo</label>
+                        <span class="closeStyle removeFile"></span>
+                        </div>
+                    </div>
+                    </li>
+                    <li>
+                    <div class="upld-list">
+                        <div class="upd-iconName">
+                        <span class="uploaded-icon">
+                            <svg viewBox="-448.5 266.5 28.9 29">
+                            <use xlink:href="#upload-svg"></use>
+                            </svg>
+                        </span>
+                        <div>
+                            <span class="docName">Sex photo</span>
+                            <div class="docType"><span class="fileName"></span> <i class="mdot"></i><span class="fileSize"></span></div>
+                            <div class="msg"></div>
+                        </div>
+                        </div>
+                        <div>
+                        <input type="file" class="upload-img" name="" id="userFile6">
+                        <label for="userFile6">Add photo</label>
                         <span class="closeStyle removeFile"></span>
                         </div>
                     </div>
@@ -153,8 +194,7 @@
             <!--upload img-->      
             <input class="button" type="submit" value="Add Marker" />
             </form>
-        </div>
-    </div>
+       </div>
     </div>
 
 </div>
