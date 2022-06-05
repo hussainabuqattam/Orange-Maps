@@ -13,29 +13,32 @@ footer .Created{display: inline-block;color: #ff7900;}
 /*start check box*/
 .colorsche{color: #fff!important;}
 
-.check-container{margin: 300px auto;}
+.check-container{
+  margin: 300px auto;
+  position: absolute;
+  top: 30%;
+  width: 40%;
+  left: 58%;}
 
   label.check-box {
-    margin: 1rem 2rem 1.75rem;
+    margin: 0.1rem 1rem 0.8rem;
     position: relative;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     line-height: 1rem;
     height: 1rem;
-    z-index: 100000;
     cursor: pointer;
+    width: 100%;
   }
   .check-box span{color:#ff7900;font-weight: 100;}
   input[type="checkbox"] {
     position: relative;
     cursor: pointer;
-    width: 1.2rem;
     height: 1.2rem;
-    margin-right: 1rem;
     background: white;
     outline: none;
-    z-index: 100000;
+    margin-right: 0.8rem;
   }
   
   input[type="checkbox"]:before {
@@ -46,6 +49,14 @@ footer .Created{display: inline-block;color: #ff7900;}
     background: white;
     cursor: pointer;
   }
+ .newstylemodal{
+  opacity: 1!important;
+  display: block!important;
+  background-color: #0000007d!important;
+ }
+
+ .contmodalstyle{top: 40%!important;}
+
   
   input[type="checkbox"]:after {
     content: "";

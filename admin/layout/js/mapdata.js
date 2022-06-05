@@ -16,6 +16,7 @@ var simplemaps_countrymap_mapdata={
     all_states_zoomable: "yes",
     
     //Location defaults
+    location_description: "Location description",
     location_url: "",
     location_color: "#ff6600",
     location_opacity:0,
@@ -66,7 +67,6 @@ var simplemaps_countrymap_mapdata={
     fade_time: 0.1,
     link_text: "View Website",
     popups: "detect",
-    popups:'on_click',
     state_image_url: "",
     state_image_position: "",
     location_image_url: ""
@@ -133,21 +133,23 @@ var simplemaps_countrymap_mapdata={
       hover_color: "#977e61"
     }
   },
-  locations:$(document).ready(function(){
-  $.ajax({
-    method:"post",
-    url:"ajax.php",
-    data:{map_Id:mapId, lat_map:latmap,lng_map:lngmap,name_map:namemap},
-    success: { 
-      map_Id: {
-        lat: lat_map,
-        lng: lng_map,
-        name: name_map,
-      },
+  locations: {
+    "0": {
+      lat: "31.95",
+      lng: "35.933333",
+      name: "Amman"
+    },
+    "1": {
+      lat: "32.34149000000008",
+      lng: "36.202440000000024",
+      name: "Mafraq"
+    },
+    "2": {
+      lat: "32.55556",
+      lng: "35.85",
+      name: "Irbid"
     }
-})
-  }),
- 
+  },
   labels: {
     "0": {
       name: "Aqaba",
@@ -238,10 +240,4 @@ var simplemaps_countrymap_mapdata={
     entries: []
   },
   regions: {}
-};
-// simplemaps_countrymap_mapdata.main_settings.location_color = '#000';
-// simplemaps_countrymap_mapdata.main_settings.popups =  orangemapshow();
-simplemaps_countrymap_mapdata.main_settings.popups.onclick = function orangemapshow(){
-  $('#exampleModal').modal('show');
-  console.log('ok');
 };

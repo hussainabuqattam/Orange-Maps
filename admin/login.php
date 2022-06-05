@@ -1,5 +1,5 @@
 <?php
-    $titlePage = "Admin login";
+    $titlePage = "Login";
     include "include/header.php";
     include "include/nav.php";
 ?>
