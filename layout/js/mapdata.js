@@ -66,7 +66,6 @@ var simplemaps_countrymap_mapdata={
     fade_time: 0.1,
     link_text: "View Website",
     popups: "detect",
-    popups:'on_click',
     state_image_url: "",
     state_image_position: "",
     location_image_url: ""
@@ -133,6 +132,7 @@ var simplemaps_countrymap_mapdata={
       hover_color: "#977e61"
     }
   },
+
   locations: $.ajax({
       method : "get",
       url : "ajax.php",
@@ -234,9 +234,4 @@ var simplemaps_countrymap_mapdata={
   },
   regions: {}
 };
-// simplemaps_countrymap_mapdata.main_settings.location_color = '#000';
-// simplemaps_countrymap_mapdata.main_settings.popups =  orangemapshow();
-simplemaps_countrymap_mapdata.main_settings.popups.onclick = function orangemapshow(){
-  $('#exampleModal').modal('show');
-  console.log('ok');
-};
+
