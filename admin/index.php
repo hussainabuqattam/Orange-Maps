@@ -153,8 +153,8 @@
                         </div>
                         </div>
                         <div>
-                        <input type="file" class="upload-img" name="" id="userFile6">
-                        <label for="userFile6">Add photo</label>
+                        <input type="file" class="upload-img" name="" id="userFile7">
+                        <label for="userFile7">Add photo</label>
                         <span class="closeStyle removeFile"></span>
                         </div>
                     </div>
@@ -174,8 +174,8 @@
                         </div>
                         </div>
                         <div>
-                        <input type="file" class="upload-img" name="" id="userFile6">
-                        <label for="userFile6">Add photo</label>
+                        <input type="file" class="upload-img" name="" id="userFile8">
+                        <label for="userFile8">Add photo</label>
                         <span class="closeStyle removeFile"></span>
                         </div>
                     </div>

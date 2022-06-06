@@ -66,7 +66,6 @@ var simplemaps_countrymap_mapdata={
     fade_time: 0.1,
     link_text: "View Website",
     popups: "detect",
-    popups:'on_click',
     state_image_url: "",
     state_image_position: "",
     location_image_url: ""
@@ -134,27 +133,22 @@ var simplemaps_countrymap_mapdata={
     }
   },
   locations:{
+    
       "0": {
         lat: "31.9500",
         lng: "35.9333",
         name: "Amman",
       },
       "1": {
-        lat: "31.9650",
-        lng: "35.9082",
-        name: "Amman",
+        lat: "32.5015",
+        lng: "38.2040",
+        name: "Mafraq",
       },
       "2": {
-        lat: "33.9500",
-        lng: "35.9333",
-        name: "Amman",
+        lat: "29.5167", 
+        lng: "35.0000", 
+        name: "Aqaba",
       },
-      "3": {
-        lat: "34.9500",
-        lng: "35.9333",
-        name: "Amman",
-      },
-
     },
   labels: {
     "0": {
@@ -247,9 +241,4 @@ var simplemaps_countrymap_mapdata={
   },
   regions: {}
 };
-// simplemaps_countrymap_mapdata.main_settings.location_color = '#000';
-// simplemaps_countrymap_mapdata.main_settings.popups =  orangemapshow();
-simplemaps_countrymap_mapdata.main_settings.popups.onclick = function orangemapshow(){
-  $('#exampleModal').modal('show');
-  console.log('ok');
-};
+
