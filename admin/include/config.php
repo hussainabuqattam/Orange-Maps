@@ -2,7 +2,7 @@
 
 //Data base Constants
 defined('HOST_NAME') ? null : define('HOST_NAME','localhost');
-defined('DB_NAME') ? null : define('DB_NAME','doctorcom');
+defined('DB_NAME') ? null : define('DB_NAME','orange_map');
 defined('USER') ? null : define('USER','root');
 defined('PASSWORD') ? null : define('PASSWORD','');
 
