@@ -132,24 +132,17 @@ var simplemaps_countrymap_mapdata={
       hover_color: "#977e61"
     }
   },
-  locations:{
-    
-      "0": {
-        lat: "31.9500",
-        lng: "35.9333",
-        name: "Amman",
-      },
-      "1": {
-        lat: "32.5015",
-        lng: "38.2040",
-        name: "Mafraq",
-      },
-      "2": {
-        lat: "29.5167", 
-        lng: "35.0000", 
-        name: "Aqaba",
-      },
-    },
+
+  locations: $.ajax({
+      method : "get",
+      url : "ajax.php",
+      success:function(result) {
+        result = JSON.parse(result);
+        console.log(this.data = result);
+        this.data;
+        // $('#map').html(result);
+      }
+  }),
   labels: {
     "0": {
       name: "Aqaba",

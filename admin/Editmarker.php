@@ -1,7 +1,12 @@
 <?php
     $titlePage = "Admin login";
+    include "include/init.php";
     include "include/header.php";
     include "include/nav.php";
+
+    if(!isset($_SESSION['AdminId']))
+        Redirect("login.php");
+
 ?>
 <div class="container">
     <div class="contain-header-title">
