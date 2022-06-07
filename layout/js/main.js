@@ -17,4 +17,4 @@ function modalshow () {
         }
     }
 }
-setTimeout(modalshow, 3000) 
+setTimeout(modalshow, 500) 
