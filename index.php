@@ -1,49 +1,26 @@
 <?php
     $titlePage = "index";
+    include "include/init.php";
     include "include/header.php";
     include "include/nav.php";
+
+     $stmt = $connect->prepare("SELECT * FROM orange_section");
+     $stmt->execute();
+     $orange_section = $stmt->fetchAll();
 ?>
         <div id="map" class="map-orange"></div>
         <div class="check-container">
             <div class="row">
                 <div class="col-md-4">
+                    <?php if(!empty($orange_section)): foreach ($orange_section as $item): ?>
                     <label class="check-box">
-                    <input type="checkbox" class="checkinputbox">
-                    <span class="">Coding School</span> 
+                        <input type="checkbox" value="<?= $item['id'] ?>" class="checkinputbox">
+                        <span class=""><?= $item['name'] ?></span>
                     </label>
-                    <label class="check-box">
-                    <input type="checkbox" class="checkinputbox">
-                    <span class="">Fablab</span> 
-                    </label>
-                    <label class="check-box">
-                    <input type="checkbox" class="checkinputbox">
-                    <span class="">Big</span> 
-                    </label>
-                    <label class="check-box">
-                    <input type="checkbox" class="checkinputbox">
-                    <span class="">Coding Academy</span> 
-                    </label>
-                    <label class="check-box">
-                    <input type="checkbox" class="checkinputbox">
-                    <span class="">Al</span> 
-                    </label>
-                </div>
-                <div class="col-md-4">
-                    <label class="check-box">
-                    <input type="checkbox" class="checkinputbox">
-                    <span class="">Inv</span> 
-                    </label>
-                    <label class="check-box">
-                    <input type="checkbox" class="checkinputbox">
-                    <span class="">Digital Center</span> 
-                    </label>
+                    <?php endforeach; endif; ?>
                 </div>
             </div>
         </div>
-
-
-
-
 
 <!-- Modal -->
 
