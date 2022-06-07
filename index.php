@@ -69,24 +69,24 @@
 
         <ul class="thumbnails">
           <li>
-            <a href="#slide1"><img src="map_images/download.jpg" /></a>
+            <a href="#slide1" id="smallslide1"><img src="map_images/download.jpg" /></a>
           </li>
           <li>
-            <a href="#slide2"><img src="map_images/images (1).jpg" /></a>
+            <a href="#slide2" id="smallslide2"><img src="map_images/images (1).jpg" /></a>
           </li>
           <li>
-            <a href="#slide3"><img src="map_images/images.jpg" /></a>
+            <a href="#slide3" id="smallslide3"><img src="map_images/images.jpg" /></a>
           </li>
           <li>
-            <a href="#slide4"><img src="map_images/images (2).jpg" /></a>
+            <a href="#slide4" id="smallslide4"><img src="map_images/images (2).jpg" /></a>
           </li>
           <li>
-            <a href="#slide5"><img src="map_images/images (3).jpg" /></a>
+            <a href="#slide5" id="smallslide5"><img src="map_images/images (3).jpg" /></a>
           </li>
         </ul>
         </div>
         <div>
-          <p class="text-modal-slide">
+          <p class="text-modal-slide" id="descriptionslide">
               numeric characters, between two or more users of mobile devices, desktops/laptops, or another type of compatible computer. Text messages may be sent over a cellular network, or may also be sent via an Internet connection.
               The term originally referred to messages sent using the Short Message Service (SMS). It has grown beyond alphanumeric text to include multimedia messages using the Multimedia Messaging Service (MMS) containing digital images, videos, and sound content, as well as ideograms known as emoji (happy faces, sad faces, and other icons), and instant messenger applications (usually the term is used when on mobile devices).
           </p>
