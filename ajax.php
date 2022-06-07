@@ -35,3 +35,23 @@ if(isset($_GET['getAllLocation'])) {
 
     echo json_encode($data);
 }
+
+if(isset($_GET['id'])){
+    if(!empty($_GET['id'])) {
+        $stmt = $connect->prepare("SELECT * FROM marker WHERE orange_section_id IN ?");
+        $stmt->execute([$_GET['id']]);
+    }else{
+        $stmt = $connect->prepare("SELECT * FROM marker");
+        $stmt->execute();
+    }
+    $markers = $stmt->fetchAll();
+    $data = [];
+
+    foreach ($markers as $index => $marker) {
+        $data[$marker['id']]['lat'] = substr_replace($marker['location'], " ", strpos($marker['location'], "/"));
+        $data[$marker['id']]['lng'] = str_replace("/", "", substr($marker['location'], strpos($marker['location'], "/")));
+        $data[$marker['id']]['name'] = $marker['governorate'];
+    }
+
+    echo json_encode($data);
+}
