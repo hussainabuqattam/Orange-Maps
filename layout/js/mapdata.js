@@ -134,7 +134,7 @@ var simplemaps_countrymap_mapdata={
   },
 
   locations:{},
-  
+
   labels: {
     "0": {
       name: "Aqaba",
