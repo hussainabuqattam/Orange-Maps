@@ -133,16 +133,8 @@ var simplemaps_countrymap_mapdata={
     }
   },
 
-  locations: $.ajax({
-      method : "get",
-      url : "ajax.php",
-      success:function(result) {
-        result = JSON.parse(result);
-        console.log(this.data = result);
-        this.data;
-        // $('#map').html(result);
-      }
-  }),
+  locations:{},
+  
   labels: {
     "0": {
       name: "Aqaba",
@@ -235,3 +227,12 @@ var simplemaps_countrymap_mapdata={
   regions: {}
 };
 
+$.ajax({
+  method : "get",
+  url : "ajax.php",
+  success:function(result) {
+    result = JSON.parse(result);
+    simplemaps_countrymap_mapdata.locations = {...result};
+    console.log(simplemaps_countrymap_mapdata.locations);
+  }
+});
