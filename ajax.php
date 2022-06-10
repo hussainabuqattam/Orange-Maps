@@ -37,9 +37,11 @@ if(isset($_GET['getAllLocation'])) {
 }
 
 if(isset($_GET['id'])){
-    if(!empty($_GET['id'])) {
-        $stmt = $connect->prepare("SELECT * FROM marker WHERE orange_section_id IN ?");
-        $stmt->execute([$_GET['id']]);
+    // var_dump($_GET['id']);die;
+    if($_GET['id'] != -1) {
+        $array = implode(",", $_GET['id']);
+        $stmt = $connect->prepare("SELECT * FROM marker WHERE orange_section_id IN ($array)");
+        $stmt->execute();
     }else{
         $stmt = $connect->prepare("SELECT * FROM marker");
         $stmt->execute();

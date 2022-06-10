@@ -237,6 +237,7 @@ $.ajax({
     console.log(simplemaps_countrymap_mapdata.locations);
   }
 });
+
 var checkarray = [];
 var checkboxes = document.querySelectorAll('.inputcheckfilter');
 for(var checkbox of checkboxes){
@@ -246,15 +247,20 @@ for(var checkbox of checkboxes){
     }else{
       checkarray = checkarray.filter(c => c !== this.value);
     }
-    console.log(checkarray);
-     
+    console.log(checkarray.length === 0);
+    // if(checkarray.length === 0){
+    //   checkarray = -1;
+    // }
+
     $.ajax({
       method : "get",
       url : "ajax.php",
-      data:{checkarray},
+      data:{id: checkarray.length === 0 ? -1 : checkarray},
       success:function(result) {
             result = JSON.parse(result);
-            console.log(result);
+            console.log(result)
+            simplemaps_countrymap_mapdata.locations = {...result};
+            console.log();
       }
     });
   })
