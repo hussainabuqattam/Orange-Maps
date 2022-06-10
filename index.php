@@ -14,7 +14,7 @@
                 <div class="col-md-4">
                     <?php if(!empty($orange_section)): foreach ($orange_section as $item): ?>
                     <label class="check-box">
-                        <input type="checkbox" value="<?= $item['id'] ?>" class="checkinputbox">
+                        <input type="checkbox"  value="<?= $item['id'] ?>" class="checkinputbox inputcheckfilter">
                         <span class=""><?= $item['name'] ?></span>
                     </label>
                     <?php endforeach; endif; ?>

@@ -237,3 +237,52 @@ $.ajax({
     console.log(simplemaps_countrymap_mapdata.locations);
   }
 });
+var checkarray = [];
+var checkboxes = document.querySelectorAll('.inputcheckfilter');
+for(var checkbox of checkboxes){
+  checkbox.addEventListener('click',function(){
+    if(this.checked == true){
+      checkarray.push(this.value);
+    }else{
+      checkarray = checkarray.filter(c => c !== this.value);
+    }
+    console.log(checkarray);
+     
+    $.ajax({
+      method : "get",
+      url : "ajax.php",
+      data:{checkarray},
+      success:function(result) {
+            result = JSON.parse(result);
+            console.log(result);
+      }
+    });
+  })
+}
+
+// console.log($(checkboxes));
+// $('.inputcheckfilter').click(function(){
+//   const checkvalue = $(this).val();
+//   var checksession = sessionStorage.getItem('value');
+//   console.log( typeof parseInt(checkvalue)  );
+//   var arr = [];
+//   arr.push(checksession);
+//   if($(this).is(':checked')){
+//     arr.push(checkvalue);
+//     sessionStorage.setItem('value' , arr);
+//   }else{    
+//     for( var i = 0; i < arr.length; i++){ 
+    
+//         if ( arr[i] === parseInt(checkvalue)) { 
+    
+//             arr.splice(i, 1); 
+//         }
+    
+//     }
+//   //  var arrkk =  arr.filter(filtersd => filtersd != parseInt(checkvalue))
+//     sessionStorage.setItem('value' , arr);
+//     console.log(arr);
+//   }
+//    console.log(sessionStorage.getItem('value'));
+//    console.log();
+
