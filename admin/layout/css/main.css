@@ -62,9 +62,9 @@ input:focus::-webkit-input-placeholder {color:#ff7900;}
 
 .new-mark{display: inline;color: #ff7900;font-size: 25px;}
 
-.edit-mark{display: inline;float: right;clear: both;background-color:#ff7900;border-color: #ff7900!important;color: #fff!important;}
+.editmark{display: inline;float: right;clear: both;background-color:#ff7900;border-color: #ff7900!important;color: #fff!important;}
 
-.edit-mark:hover{background-color: #ff7700e7!important;}
+.editmark:hover{background-color: #ff7700e7!important;}
 /*form start*/
 
 .clearfix:after {
@@ -142,7 +142,7 @@ input:focus::-webkit-input-placeholder {color:#ff7900;}
   border: 1px solid #ff7900;
   background: #fafafa;
 }
-.form_wrapper input[type=submit] {
+.form_wrapper .addmark {
   background:#ff7900;
   height: 45px;
   line-height: 35px;
@@ -406,6 +406,19 @@ input:focus::-webkit-input-placeholder {color:#ff7900;}
 .upld-list .closeStyle:before {-webkit-transform: rotate(45deg);transform: rotate(45deg);}
 
 .upld-list .closeStyle:after {-webkit-transform: rotate(-45deg);transform: rotate(-45deg);}
+
+.edit-mark{
+  padding: 0 30px;
+  background: #ff7900;
+  height: 45px;
+  line-height: 35px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  transition: all 0.3s ease-in-out;}
 
 /*upload*/
 /*form end*/

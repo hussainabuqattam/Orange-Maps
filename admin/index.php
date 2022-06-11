@@ -42,7 +42,7 @@
 <div class="container">
     <div class="contain-header-title">
         <h1 class="new-mark">Add New Marker</h1>
-        <a href="Editmarker.php" class="btn btn-success edit-mark">Edit Marker</a>
+        <a href="Editmarker.php" class="btn btn-success editmark">Edit Marker</a>
     </div>
 </div>
 <hr>
@@ -232,7 +232,7 @@
                 </svg>
                 </div>
             <!--upload img-->      
-            <input class="button" name="save" type="submit" value="Add Marker" />
+            <input class="button addmark" name="save" type="submit" value="Add Marker" />
         </form>
     </div>
 </div>

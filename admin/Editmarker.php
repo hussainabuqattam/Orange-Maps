@@ -11,7 +11,7 @@
 <div class="container">
     <div class="contain-header-title">
         <h1 class="new-mark">Edit Marker</h1>
-        <a href="index.php" class="btn btn-success edit-mark">Add Marker</a>
+        <a href="index.php" class="btn btn-success editmark">Add Marker</a>
     </div>
 </div>
 <hr>
@@ -202,8 +202,11 @@
                         </svg>
                         </div>
                     <!--upload img-->      
-                    <input class="button" type="submit" value="Add Marker" />
-                    </form>
+                    <div style="display:flex;justify-content: space-around;">
+                    <input class="button edit-mark" type="submit" value="Delete Marker" style="background-color:red"/>
+                    <input class="button edit-mark" type="submit" value="Edit Marker" />
+                    </div>    
+                </form>
             </div>
             </div>
         </div>
