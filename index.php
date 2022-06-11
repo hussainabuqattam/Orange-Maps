@@ -34,41 +34,38 @@
         </button>
       </div>
       <div class="modal-body">
-      <div class="container-img-slider">
-        <div class="cont-img">
-        <ul class="slides">
-          <li id="slide1"><img src="map_images/download.jpg" alt="" /></li>
-          <li id="slide2"><img src="map_images/images (1).jpg" alt="" /></li>
-          <li id="slide3"><img src="map_images/images.jpg" alt="" /></li>
-          <li id="slide4"><img src="map_images/images (2).jpg" alt="" /></li>
-          <li id="slide5"><img src="map_images/images (3).jpg" alt="" /></li>
-        </ul>
+  
+	<div id="content-wrapper">
+		
 
-        <ul class="thumbnails">
-          <li>
-            <a href="#slide1" id="smallslide1"><img src="map_images/download.jpg" /></a>
-          </li>
-          <li>
-            <a href="#slide2" id="smallslide2"><img src="map_images/images (1).jpg" /></a>
-          </li>
-          <li>
-            <a href="#slide3" id="smallslide3"><img src="map_images/images.jpg" /></a>
-          </li>
-          <li>
-            <a href="#slide4" id="smallslide4"><img src="map_images/images (2).jpg" /></a>
-          </li>
-          <li>
-            <a href="#slide5" id="smallslide5"><img src="map_images/images (3).jpg" /></a>
-          </li>
-        </ul>
-        </div>
-        <div>
-          <p class="text-modal-slide" id="descriptionslide">
-              numeric characters, between two or more users of mobile devices, desktops/laptops, or another type of compatible computer. Text messages may be sent over a cellular network, or may also be sent via an Internet connection.
-              The term originally referred to messages sent using the Short Message Service (SMS). It has grown beyond alphanumeric text to include multimedia messages using the Multimedia Messaging Service (MMS) containing digital images, videos, and sound content, as well as ideograms known as emoji (happy faces, sad faces, and other icons), and instant messenger applications (usually the term is used when on mobile devices).
-          </p>
-        </div>
-        </div>
+		<div class="column">
+			<img id=featured src="map_images/images (1).jpg">
+
+			<div id="slide-wrapper" >
+				<img id="slideLeft" class="arrow" src="map_images/arrow-left.png">
+
+				<div id="slider">
+					<img class="thumbnail active" src="map_images/download.jpg">
+					<img class="thumbnail" src="map_images/images.jpg">
+					<img class="thumbnail" src="map_images/images (3).jpg">
+
+					<img class="thumbnail" src="map_images/download.png">
+					<img class="thumbnail" src="map_images/images (1).jpg">
+					<img class="thumbnail" src="map_images/images (3).jpg">
+					<img class="thumbnail" src="map_images/download.png">
+				</div>
+
+				<img id="slideRight" class="arrow" src="map_images/arrow-right.png">
+			</div>
+		</div>
+
+		<div class="column" style="margin-bottom=60px;">
+			<h1>Awesome Shoes</h1>
+			<hr>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+		</div>
+
+	</div>
       </div>
     </div>
   </div>

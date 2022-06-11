@@ -241,7 +241,7 @@ $.ajax({
 var checkarray = [];
 var checkboxes = document.querySelectorAll('.inputcheckfilter');
 for(var checkbox of checkboxes){
-  checkbox.addEventListener('click',function(){
+  checkbox.addEventListener('click',function() {
     if(this.checked == true){
       checkarray.push(this.value);
     }else{
@@ -251,20 +251,25 @@ for(var checkbox of checkboxes){
     // if(checkarray.length === 0){
     //   checkarray = -1;
     // }
+      $.ajax({
+        method : "get",
+        url : "ajax.php",
+        data:{id: checkarray.length === 0 ? -1 : checkarray},
+        success:function(result) {
+              result = JSON.parse(result);
+             simplemaps_countrymap_mapdata.locations = {...result};
+             console.log(simplemaps_countrymap_mapdata.locations);
 
-    $.ajax({
-      method : "get",
-      url : "ajax.php",
-      data:{id: checkarray.length === 0 ? -1 : checkarray},
-      success:function(result) {
-            result = JSON.parse(result);
-            console.log(result)
-            simplemaps_countrymap_mapdata.locations = {...result};
-            console.log();
-      }
-    });
+        }
+      });
   })
 }
+
+// Object.keys(simplemaps_countrymap_mapdata.locations ).forEach(key => {
+//   simplemaps_countrymap_mapdata.locations[key] = '';
+// })
+
+
 
 // console.log($(checkboxes));
 // $('.inputcheckfilter').click(function(){
