@@ -101,7 +101,7 @@ function modalshow () {
               $.ajax({
                   method : "get",
                   url : "ajax.php",
-                  data:{infomark:infomarks},
+                  data:{locationid:locationIndex},
                   success:function(result) {
                       
                   }
