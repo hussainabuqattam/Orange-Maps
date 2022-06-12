@@ -133,23 +133,7 @@ var simplemaps_countrymap_mapdata={
       hover_color: "#977e61"
     }
   },
-  locations: {
-    "0": {
-      lat: "31.95",
-      lng: "35.933333",
-      name: "Amman"
-    },
-    "1": {
-      lat: "32.34149000000008",
-      lng: "36.202440000000024",
-      name: "Mafraq"
-    },
-    "2": {
-      lat: "32.55556",
-      lng: "35.85",
-      name: "Irbid"
-    }
-  },
+  locations: {},
   labels: {
     "0": {
       name: "Aqaba",
@@ -241,3 +225,13 @@ var simplemaps_countrymap_mapdata={
   },
   regions: {}
 };
+// $.ajax({
+//   method : "get",
+//   url : "ajax.php",
+//   data:{getAllLocation: 1},
+//   success:function(result) {
+//     result = JSON.parse(result);
+//     simplemaps_countrymap_mapdata.locations = {...result};
+//     console.log(simplemaps_countrymap_mapdata.locations);
+//   }
+// });

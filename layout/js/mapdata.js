@@ -257,8 +257,7 @@ for(var checkbox of checkboxes){
         data:{id: checkarray.length === 0 ? -1 : checkarray},
         success:function(result) {
               result = JSON.parse(result);
-             simplemaps_countrymap_mapdata.locations = {...result};
-             console.log(simplemaps_countrymap_mapdata.locations);
+              console.log(result);
 
         }
       });
