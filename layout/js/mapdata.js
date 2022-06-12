@@ -258,7 +258,21 @@ for(var checkbox of checkboxes){
         success:function(result) {
               result = JSON.parse(result);
               console.log(result);
+              var result = $.map(result, function(value, index){
+                  return [index]
+              });
 
+              console.log(simplemaps_countrymap_mapdata.locations);
+              var arry = $.map(simplemaps_countrymap_mapdata.locations, function(value, index){
+                return [value];
+              });
+              arry.forEach((map) => {
+                if(!result.includes(map.id)){
+                  $(".sm_location_" + map.id).fadeOut();
+                }else{
+                  $(".sm_location_" + map.id).fadeIn();
+                }
+              })
         }
       });
   })
@@ -295,4 +309,3 @@ for(var checkbox of checkboxes){
 //   }
 //    console.log(sessionStorage.getItem('value'));
 //    console.log();
-
