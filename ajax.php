@@ -31,6 +31,7 @@ if(isset($_GET['getAllLocation'])) {
         $data[$marker['id']]['lat'] = substr_replace($marker['location'], " ", strpos($marker['location'], "/"));
         $data[$marker['id']]['lng'] = str_replace("/", "", substr($marker['location'], strpos($marker['location'], "/")));
         $data[$marker['id']]['name'] = $marker['governorate'];
+        $data[$marker['id']]['id'] = $marker['id'];
     }
 
     echo json_encode($data);
@@ -53,6 +54,7 @@ if(isset($_GET['id'])){
         $data[$marker['id']]['lat'] = substr_replace($marker['location'], " ", strpos($marker['location'], "/"));
         $data[$marker['id']]['lng'] = str_replace("/", "", substr($marker['location'], strpos($marker['location'], "/")));
         $data[$marker['id']]['name'] = $marker['governorate'];
+        $data[$marker['id']]['id'] = $marker['id'];
     }
 
     echo json_encode($data);
