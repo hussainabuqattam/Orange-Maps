@@ -309,4 +309,3 @@ for(var checkbox of checkboxes){
 //   }
 //    console.log(sessionStorage.getItem('value'));
 //    console.log();
-
