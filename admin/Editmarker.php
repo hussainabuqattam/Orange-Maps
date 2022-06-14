@@ -7,6 +7,56 @@
     if(!isset($_SESSION['AdminId']))
         Redirect("login.php");
 
+        $stmt = $connect->prepare("SELECT * FROM orange_section");
+        $stmt->execute();
+        $orange_section = $stmt->fetchAll();
+
+
+        if(isset($_POST['save'])){
+
+            $stmt = $connect->prepare("SELECT * FROM marker WHERE id = ?");
+            $stmt->execute([$_POST['id']]);
+            $marker = $stmt->fetchAll();
+
+            $governorate = $_POST['governorate'];
+            $location = $_POST['location'];
+            $id = $_POST['id'];
+            $orange_section_id = $_POST['orange_section_id'];
+            $full_address = $_POST['full_address'];
+            $description = $_POST['description'];
+            $image1 = empty($_FILES['image1']['name']) ? $marker['image1'] : $_FILES['image1']['name'];
+            $image2 = empty($_FILES['image2']['name']) ? $marker['image2'] : $_FILES['image2']['name'];
+            $image3 = empty($_FILES['image3']['name']) ? $marker['image3'] : $_FILES['image3']['name'];
+            $image4 = empty($_FILES['image4']['name']) ? $marker['image4'] : $_FILES['image4']['name'];
+            $image5 = empty($_FILES['image5']['name']) ? $marker['image5'] : $_FILES['image5']['name'];
+            $image6 = empty($_FILES['image6']['name']) ? $marker['image6'] : $_FILES['image6']['name'];
+    
+            $stmt = $connect->prepare("UPDATE marker SET governorate = ?, location = ?, orange_section_id = ?, full_address = ?, description = ?, image1 = ?, image2 = ?, image3 = ?, image4 = ?, image5 = ?, image6 = ? WHERE id = ?");
+            $result = $stmt->execute([$governorate, $location, $orange_section_id, $full_address, $description, $image1, $image2, $image3, $image4, $image5, $image6, $id]);
+    
+            if($result == true){
+                if(empty($_FILES['image1']['name']))
+                    move_uploaded_file($_FILES['image1']['tmp_name'], "img/$image1");
+                
+                if(empty($_FILES['image2']['name']))
+                    move_uploaded_file($_FILES['image2']['tmp_name'], "img/$image2");
+                
+                if(empty($_FILES['image3']['name']))
+                    move_uploaded_file($_FILES['image3']['tmp_name'], "img/$image3");
+
+                if(empty($_FILES['image4']['name']))
+                    move_uploaded_file($_FILES['image4']['tmp_name'], "img/$image4");  
+                
+                if(empty($_FILES['image5']['name']))
+                    move_uploaded_file($_FILES['image5']['tmp_name'], "img/$image5");  
+
+                if(empty($_FILES['image6']['name']))
+                    move_uploaded_file($_FILES['image6']['tmp_name'], "img/$image6");                
+                    
+                    $_SESSION['message'] = "Update Successfully";
+                Refresh();
+            }
+        }
 ?>
 <div class="container">
     <div class="contain-header-title">
@@ -16,6 +66,9 @@
 </div>
 <hr>
 <div class="container">
+<?php if(isset($_SESSION['message'])): ?>
+    <div class="alert alert-success"><?= $_SESSION['message'] ?></div>
+<?php unset($_SESSION['message']); endif; ?>
     <div class="row">
         <div class="col-md-6">
            <div id="map" class="map-orange"></div>
@@ -23,42 +76,46 @@
         <div class="col-md-6">
                 <div class="form_wrapper" style="margin: 5% auto 0;">
                  <div class="form_container">
-                    <form>
+                    <form method="post" enctype="multipart/form-data">
                     <div class="input_field select_option">
-                            <select >
-                                <option value="Amman">Amman</option>
-                                <option value="Aqaba">Aqaba</option>
-                                <option value="Mafraq">Mafraq</option>
-                                <option value="Tafilah">Tafilah</option>
-                                <option value="Ma`an">Ma`an</option>
-                                <option value="Irbid">Irbid</option>
-                                <option value="Ajlun">Ajlun</option>
-                                <option value="Jarash">Jarash</option>
-                                <option value="Balqa">Balqa</option>
-                                <option value="Madaba">Madaba</option>
-                                <option value="Karak">Karak</option>
-                                <option value="Zarqa">Zarqa</option>
-                            </select>
+                    <select class="city" name="governorate" id="city">
+                        <option disabled hidden value=""></option>
+                        <option value="Al ‘Āşimah">Amman</option>
+                        <option value="Al ‘Aqabah">Aqaba</option>
+                        <option value="Al Mafraq">Mafraq</option>
+                        <option value="Aţ Ţafīlah">Tafilah</option>
+                        <option value="Ma‘ān">Ma`an</option>
+                        <option value="Irbid">Irbid</option>
+                        <option value="‘Ajlūn">Ajlun</option>
+                        <option value="Jarash">Jarash</option>
+                        <option value="Al Balqā">Balqa</option>
+                        <option value="Ma’dabā">Madaba</option>
+                        <option value="Al Karak">Karak</option>
+                        <option value="Az Zarqā’">Zarqa</option>
+                    </select>
                             <div class="select_arrow"></div>
                     </div>
                     <div class="input_field select_option">
-                            <select >
-                                <option value="CodingSchool">Coding School</option>
-                                <option value="Fablab">Fablab</option>
-                                <option value="Big">Big</option>
-                                <option value="CodingAcademy">Coding Academy</option>
-                                <option value="Ai">Ai</option>
-                                <option value="Inv">Inv</option>
-                                <option value="DigitalCenter">Digital Center</option>
+                        <select class="country" name="location">
+                            <option value="">Select Region</option>
+                        </select>
+                        <div class="select_arrow"></div>
+                    </div>
+                    <div class="input_field select_option">
+                            <select name="orange_section_id" id="section_id">
+                                <?php if(!empty($orange_section)): foreach ($orange_section as $item): ?>
+                                    <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                <?php endforeach; endif;?>
                             </select>
                             <div class="select_arrow"></div>
                     </div>
                     <div class="input_field"><span><i class="fas fa-map-marker-alt"></i></span>
-                        <input type="text" name="Location" placeholder="Location" required />
+                        <input type="text" id="Location" name="full_address" placeholder="Location" required />
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" placeholder="description"id="exampleFormControlTextarea1" rows="3" style="resize: none;"></textarea>
+                        <textarea class="form-control" placeholder="description" id="exampleFormControlTextarea1" name="description" rows="3" style="resize: none;"></textarea>
                     </div>
+                    <input type="hidden" id="markerId" name="id">
                     <!--upload img-->       
                         <div id="uploadFiles">
                         <p class="insUpload">Upload Photo Only JPG, PNG, GIF.</p>
@@ -79,7 +136,7 @@
                                 </div>
                                 </div>
                                 <div>
-                                <input type="file" class="upload-img" name="" id="userFile1">
+                                <input type="file" class="upload-img" name="image1" id="userFile1">
                                 <label for="userFile1">Add photo</label>
                                 <span class="closeStyle removeFile"></span>
                                 </div>
@@ -100,7 +157,7 @@
                                 </div>
                                 </div>
                                 <div>
-                                <input type="file" class="upload-img" name="" id="userFile4">
+                                <input type="file" class="upload-img" name="image2" id="userFile4">
                                 <label for="userFile4">Add photo</label>
                                 <span class="closeStyle removeFile"></span>
                                 </div>
@@ -121,7 +178,7 @@
                                 </div>
                                 </div>
                                 <div>
-                                <input type="file" class="upload-img" name="" id="userFile5">
+                                <input type="file" class="upload-img" name="image3" id="userFile5">
                                 <label for="userFile5">Add photo</label>
                                 <span class="closeStyle removeFile"></span>
                                 </div>
@@ -142,7 +199,7 @@
                                 </div>
                                 </div>
                                 <div>
-                                <input type="file" class="upload-img" name="" id="userFile6">
+                                <input type="file" class="upload-img" name="image4" id="userFile6">
                                 <label for="userFile6">Add photo</label>
                                 <span class="closeStyle removeFile"></span>
                                 </div>
@@ -163,7 +220,7 @@
                         </div>
                         </div>
                         <div>
-                        <input type="file" class="upload-img" name="" id="userFile6">
+                        <input type="file" class="upload-img" name="image5" id="userFile6">
                         <label for="userFile6">Add photo</label>
                         <span class="closeStyle removeFile"></span>
                         </div>
@@ -184,7 +241,7 @@
                         </div>
                         </div>
                         <div>
-                        <input type="file" class="upload-img" name="" id="userFile6">
+                        <input type="file" class="upload-img" name="image6" id="userFile6">
                         <label for="userFile6">Add photo</label>
                         <span class="closeStyle removeFile"></span>
                         </div>
@@ -203,8 +260,8 @@
                         </div>
                     <!--upload img-->      
                     <div style="display:flex;justify-content: space-around;">
-                    <input class="button edit-mark" type="submit" value="Delete Marker" style="background-color:red"/>
-                    <input class="button edit-mark" type="submit" value="Edit Marker" />
+                    <input class="button edit-mark"  value="Delete Marker" style="background-color:red"/>
+                    <input class="button edit-mark" name="save" type="submit" value="Edit Marker" />
                     </div>    
                 </form>
             </div>
@@ -213,3 +270,24 @@
     </div>
 </div>
 <?php include "include/footer.php"; ?>
+<script>
+    $(".city").on("change", function(){
+        var name = $(this).val();
+        $.ajax({
+            method : "get",
+            url : "ajax.php",
+            data: {"getAllCountry": 1},
+            success:function(result) {
+                result = JSON.parse(result);
+                var country = "";
+                console.log(result);
+                result.forEach((city) =>{
+                    if(city.admin_name === name){
+                        country += `<option value="${city.lat + "/" + city.lng}">${city.city}</option>`;
+                    }
+                });
+                $(".country").empty().append(country);
+            }
+        });
+    })
+</script>

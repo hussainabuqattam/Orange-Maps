@@ -103,7 +103,24 @@ function modalshow () {
                   url : "ajax.php",
                   data:{locationid:locationIndex},
                   success:function(result) {
-                      
+                    result = JSON.parse(result);
+                    console.log(result);
+                      $("#city option[value='" + result.governorate + "']").attr("selected", "selected");
+                      $("#exampleFormControlTextarea1").text(result.description);
+                      $("#Location").val(result.full_address);
+                      $("#section_id option[value='" + result.orange_section_id + "']").attr("selected", "selected");
+
+                      // console.log(result.lat.trim(), result.lng);
+                      $("#markerId").val(locationIndex);
+                      var country = "",
+                      khaled = JSON.parse(result.AllCity);
+                      khaled.forEach((city) =>{
+                          if(city.admin_name === result.governorate){
+                              country += `<option ${(result.lat.trim() == city.lat && result.lng == city.lng) ? "selected" : ""} value="${city.lat + "/" + city.lng}">${city.city}</option>`;
+                          }
+                      });
+                      $(".country").empty().append(country);
+
                   }
                 });
           })

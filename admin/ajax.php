@@ -1,4 +1,6 @@
 <?php
+    include "include/init.php";
+
     if(isset($_GET['getAllCountry'])){
         $data = file_get_contents("layout/js/newlocation.json");
         echo $data;
@@ -19,5 +21,29 @@
     
         echo json_encode($data);
     }
+
+    if(isset($_GET['locationid'])){
+        $location = $_GET['locationid'];
+        $stmt = $connect->prepare("SELECT * FROM marker WHERE id = ?");
+        $stmt->execute([$location]);
+        $locationData = $stmt->fetch();
+
+        $data['location'] = $locationData['location'];
+        $data['governorate'] = $locationData['governorate'];
+        $data["description"] = $locationData['description'];
+        $data['orange_section_id'] = $locationData['orange_section_id'];
+        $data['full_address'] = $locationData['full_address'];
+
+        $data['lat'] = $lat = substr_replace($locationData['location'], " ", strpos($locationData['location'], "/"));
+        $data['lng'] = $lng = str_replace("/", "", substr($locationData['location'], strpos($locationData['location'], "/")));
+
+        // var_dump($lat, $lng);die;
+
+        $data['AllCity'] = file_get_contents("layout/js/newlocation.json");
+
+
+        echo json_encode($data);
+    }
+
     
 ?>

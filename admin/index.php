@@ -249,6 +249,7 @@
             success:function(result) {
                 result = JSON.parse(result);
                 var country = "";
+                console.log(result);
                 result.forEach((city) =>{
                     if(city.admin_name === name){
                         country += `<option value="${city.lat + "/" + city.lng}">${city.city}</option>`;
