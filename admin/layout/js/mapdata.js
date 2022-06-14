@@ -225,13 +225,13 @@ var simplemaps_countrymap_mapdata={
   },
   regions: {}
 };
-// $.ajax({
-//   method : "get",
-//   url : "ajax.php",
-//   data:{getAllLocation: 1},
-//   success:function(result) {
-//     result = JSON.parse(result);
-//     simplemaps_countrymap_mapdata.locations = {...result};
-//     console.log(simplemaps_countrymap_mapdata.locations);
-//   }
-// });
+$.ajax({
+  method : "get",
+  url : "ajax.php",
+  data:{getAllLocation: 1},
+  success:function(result) {
+    result = JSON.parse(result);
+    simplemaps_countrymap_mapdata.locations = {...result};
+    console.log(simplemaps_countrymap_mapdata.locations);
+  }
+});

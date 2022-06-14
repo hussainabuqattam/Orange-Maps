@@ -245,6 +245,7 @@
         $.ajax({
             method : "get",
             url : "ajax.php",
+            data: {"getAllCountry": 1},
             success:function(result) {
                 result = JSON.parse(result);
                 var country = "";
