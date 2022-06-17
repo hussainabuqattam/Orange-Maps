@@ -120,6 +120,7 @@ function modalshow () {
                           }
                       });
                       $(".country").empty().append(country);
+                      $(".Delete").val(locationIndex);
 
                   }
                 });

@@ -45,5 +45,16 @@
         echo json_encode($data);
     }
 
+
+    if(isset($_POST['marker_id']))
+    {
+        $stmt = $connect->prepare("DELETE FROM marker WHERE id = ?");
+        $result = $stmt->execute([$_POST['marker_id']]);
+        if($result == true){
+            echo true;
+        }else{
+            echo false;
+        }
+    }
     
 ?>

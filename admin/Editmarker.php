@@ -260,7 +260,8 @@
                         </div>
                     <!--upload img-->      
                     <div style="display:flex;justify-content: space-around;">
-                    <input class="button edit-mark"  value="Delete Marker" style="background-color:red"/>
+                    <input class="button edit-mark Delete-marker" type="button" value="Delete Marker" style="background-color:red"/>
+                    <input type="hidden" class="Delete">
                     <input class="button edit-mark" name="save" type="submit" value="Edit Marker" />
                     </div>    
                 </form>
@@ -287,6 +288,18 @@
                     }
                 });
                 $(".country").empty().append(country);
+            }
+        });
+    })
+
+    $(document).on("click", ".Delete-marker" , function(){
+        var id = $(".Delete").val();
+        $.ajax({
+            method : "post",
+            url : "ajax.php",
+            data: {"marker_id": id},
+            success:function(result) {
+                $(".sm_location_" + id).fadeOut();
             }
         });
     })
