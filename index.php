@@ -7,6 +7,8 @@
      $stmt = $connect->prepare("SELECT * FROM orange_section");
      $stmt->execute();
      $orange_section = $stmt->fetchAll();
+
+     const arrcolor = ['#085ebd','#0a6e31','#492191','#ff8ad4','#ffb400','#4bb4e6','#50be87']
 ?>
 <div class="container">
   
@@ -89,7 +91,15 @@
                             <label for="allswitch" class="label-default" style="background-color:#085ebd;"></label>
                         </div>
                     </li>
-                    <li class="list-group-item">
+                <?php if(!empty($orange_section)): foreach ($orange_section as $index => $item): ?>
+                <li class="list-group-item">
+                <?= $item['name'] ?>
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOption<?= $item['id'] ?>" value="<?= $item['id'] ?>"name="allswitch" type="checkbox" class="checkinputbox inputcheckfilter"/>
+                            <label for="someSwitchOption<?= $item['id'] ?>" class="label-default" style="background-color:<?=arrcolor[$index]?>"></label>
+                        </div>
+                    </li>
+                    <!-- <li class="list-group-item">
                       Coding School                        
                     <div class="material-switch pull-right">
                             <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox"/>
@@ -137,7 +147,8 @@
                             <input id="someSwitchOp" name="someSwitchOption001" type="checkbox"/>
                             <label for="someSwitchOp" class="label-danger" style="background-color:#50be87;"></label>
                         </div>
-                    </li>
+                    </li> -->
+                    <?php endforeach; endif; ?>
                 </ul>
             </div>            
         </div>
