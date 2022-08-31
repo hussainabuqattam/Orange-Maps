@@ -1,7 +1,7 @@
 var simplemaps_countrymap_mapdata={
   main_settings: {
    //General settings
-    width: "500", //'700' or 'responsive'
+    width:'500',//'700' or 'responsive'
     background_color: "#FFFFFF",
     background_transparent: "yes",
     border_color: "#ffffff",
@@ -17,7 +17,6 @@ var simplemaps_countrymap_mapdata={
     
     //Location defaults
     location_url: "",
-    location_color: "#ff6600",
     location_opacity:0,
     location_hover_opacity: 1,
     location_size: 50,
@@ -73,63 +72,73 @@ var simplemaps_countrymap_mapdata={
   state_specific: {
     JOR849: {
       name: "Aqaba",
-      color: "#d8ffcf",
-      hover_color: "#d8ffcf"
+      color: "#fff6b6",
+      hover_color: "#fff6b6"
+
     },
     JOR850: {
       name: "Mafraq",
-      color: "#ffffcf",
-      hover_color: "#ffffcf"
+      color: "rgb(181, 232, 247)",
+      hover_color: "rgb(181, 232, 247)"
+
     },
     JOR851: {
       name: "Amman",
-      color: "#d6ffce",
-      hover_color: "#d6ffce"
+      color: "rgb(217, 194, 240)",
+      hover_color: "rgb(217, 194, 240)"
+
     },
     JOR852: {
       name: "Tafilah",
-      color: "#f5d5aa",
-      hover_color: "#f5d5aa"
+      color: "#ff8ad4",
+      hover_color: "#ff8ad4"
+
     },
     JOR853: {
       name: "Ma`an",
-      color: "#f3d1fe",
-      hover_color: "#f3d1fe"
+      color: "#ffe8f7",
+      hover_color: "#ffe8f7"
     },
     JOR854: {
       name: "Irbid",
-      color: "#dbfcd1",
-      hover_color: "#dbfcd1"
+      color: "#b8ebd6",
+      hover_color: "#b8ebd6"
+
     },
     JOR855: {
       name: "Ajlun",
-      color: "#fed1d2",
-      hover_color: "#fed1d2"
+      color: "#50be87",
+      hover_color: "#50be87"
+
     },
     JOR856: {
       name: "Jarash",
-      color: "#f3d0f1",
-      hover_color: "#f3d0f1"
+      color: "#a885d8",
+      hover_color: "#a885d8"
+
     },
     JOR857: {
       name: "Balqa",
-      color: "#f1dddf",
-      hover_color: "#f1dddf"
+      color: "#ffb4e6",
+      hover_color: "#ffb4e6"
+
     },
     JOR858: {
       name: "Madaba",
-      color: "#debfaa",
-      hover_color: "#debfaa"
+      color: "#fff6b6",
+      hover_color: "#fff6b6"
+
     },
     JOR859: {
       name: "Karak",
-      color: "#fed3d6",
-      hover_color: "#fed3d6"
+      color: "#b5e8f7",
+      hover_color: "#b5e8f7"
+
     },
     JOR860: {
       name: "Zarqa",
-      color: "#977e61",
-      hover_color: "#977e61"
+      color: "rgb(184, 235, 214)",
+      hover_color: "rgb(184, 235, 214)"
     }
   },
 
@@ -226,7 +235,7 @@ var simplemaps_countrymap_mapdata={
   },
   regions: {}
 };
-
+//show markr
 $.ajax({
   method : "get",
   url : "ajax.php",
@@ -234,10 +243,41 @@ $.ajax({
   success:function(result) {
     result = JSON.parse(result);
     simplemaps_countrymap_mapdata.locations = {...result};
-    console.log(simplemaps_countrymap_mapdata.locations);
   }
 });
+function setcolor(){
+  $.ajax({
+    method : "get",
+    url : "ajax.php",
+    data:{getAllLocation: 1},
+    success:function(result) {
+      result = JSON.parse(result);
+      var result = $.map(result, function(value, index){
+        return [{orderdd:value.orange_section_id,id:value.id}];
+    });
+    result.forEach((color_view) => {
+      if(color_view.orderdd == 1){
+        $(".sm_location_" + color_view.id).css('fill','#085ebd');
+      }else if(color_view.orderdd == 2){
+        $(".sm_location_" + color_view.id).css('fill','#0a6e31');
+      }else if(color_view.orderdd == 3){
+        $(".sm_location_" + color_view.id).css('fill','#492191');
+      }else if(color_view.orderdd == 4){
+        $(".sm_location_" + color_view.id).css('fill','#ff8ad4');
+      }else if(color_view.orderdd == 5){
+        $(".sm_location_" + color_view.id).css('fill','#ffb400');
+      }else if(color_view.orderdd == 6){
+        $(".sm_location_" + color_view.id).css('fill','#4bb4e6');
+      }else if(color_view.orderdd == 7){
+        $(".sm_location_" + color_view.id).css('fill','#50be87');
+      }
+    });
+    }
+  });
 
+}
+setTimeout(setcolor, 50);
+//checkbox marker
 var checkarray = [];
 var checkboxes = document.querySelectorAll('.inputcheckfilter');
 for(var checkbox of checkboxes){
@@ -247,22 +287,16 @@ for(var checkbox of checkboxes){
     }else{
       checkarray = checkarray.filter(c => c !== this.value);
     }
-    console.log(checkarray.length === 0);
-    // if(checkarray.length === 0){
-    //   checkarray = -1;
-    // }
+  
       $.ajax({
         method : "get",
         url : "ajax.php",
         data:{id: checkarray.length === 0 ? -1 : checkarray},
         success:function(result) {
               result = JSON.parse(result);
-              console.log(result);
               var result = $.map(result, function(value, index){
                   return [index]
               });
-
-              console.log(simplemaps_countrymap_mapdata.locations);
               var arry = $.map(simplemaps_countrymap_mapdata.locations, function(value, index){
                 return [value];
               });
@@ -277,35 +311,100 @@ for(var checkbox of checkboxes){
       });
   })
 }
+//modal + animation
+//checkbox
+$('.checkinputbox').click(function(){
+  $(this).siblings("span").toggleClass('colorsche');
+});
+//modal click show
+function modalshow () {
+  const locations = simplemaps_countrymap_mapdata.locations;
+  for(const locationIndex in simplemaps_countrymap_mapdata.locations){
+      const classNamess = `sm_location_${locationIndex}`
+      const locationElement = document.getElementsByClassName(classNamess)
+      for (const locationElementss of locationElement) {
+     
+          locationElementss.addEventListener("click", locations.onClick = function(){  
+            $('#map').fadeOut(1000);   
+            $('.list-group').fadeOut(2000);   
+            $('#content-wrapper').fadeIn(3000);
+            $('.cover_photo_map').fadeIn(3500);   
+                            $.ajax({
+                  method : "get",
+                  url : "ajax.php",
+                  data:{locationid:locationIndex},
+                  success:function(result) {
+                      result = JSON.parse(result);
+                      $('#slide1 img').attr('src','admin/img/' + result.image1);
+                      $('#slide2 img').attr('src','admin/img/' + result.image2);
+                      $('#slide3 img').attr('src','admin/img/' + result.image3);
+                      $('#slide4 img').attr('src','admin/img/' + result.image4);
+                      $('#slide5 img').attr('src','admin/img/' + result.image5);
+                      //small img
+                      $('#smallslide1 img').attr('src','admin/img/' + result.image1);
+                      $('#smallslide2 img').attr('src','admin/img/' + result.image2);
+                      $('#smallslide3 img').attr('src','admin/img/' + result.image3);
+                      $('#smallslide4 img').attr('src','admin/img/' + result.image4);
+                      $('#smallslide5 img').attr('src','admin/img/' + result.image5);
+                      //description
+                      $('#descriptionslide').text(result.description);
+                      
+                  }
+                });
+          })
+      }
+  }
+}
+setTimeout(modalshow, 500); 
 
-// Object.keys(simplemaps_countrymap_mapdata.locations ).forEach(key => {
-//   simplemaps_countrymap_mapdata.locations[key] = '';
-// })
+//img map animmation
+
+$('#img_animmations').click(function() {
+  $('#content-wrapper').fadeOut();
+            $('.cover_photo_map').fadeOut(); 
+            $('#map').fadeIn(3500);   
+            $('.list-group').fadeIn(3000);   
+});
+
+//modal slide
+let thumbnails = document.getElementsByClassName('thumbnail')
+
+let activeImages = document.getElementsByClassName('active')
+
+for (var i=0; i < thumbnails.length; i++){
+
+  thumbnails[i].addEventListener('click', function(){
+      console.log(activeImages)
+      
+      if (activeImages.length > 0){
+          activeImages[0].classList.remove('active')
+      }
+      
+
+      this.classList.add('active')
+      document.getElementById('featured').src = this.src
+  })
+}
 
 
+let buttonRight = document.getElementById('slideRight');
+let buttonLeft = document.getElementById('slideLeft');
 
-// console.log($(checkboxes));
-// $('.inputcheckfilter').click(function(){
-//   const checkvalue = $(this).val();
-//   var checksession = sessionStorage.getItem('value');
-//   console.log( typeof parseInt(checkvalue)  );
-//   var arr = [];
-//   arr.push(checksession);
-//   if($(this).is(':checked')){
-//     arr.push(checkvalue);
-//     sessionStorage.setItem('value' , arr);
-//   }else{    
-//     for( var i = 0; i < arr.length; i++){ 
-    
-//         if ( arr[i] === parseInt(checkvalue)) { 
-    
-//             arr.splice(i, 1); 
-//         }
-    
-//     }
-//   //  var arrkk =  arr.filter(filtersd => filtersd != parseInt(checkvalue))
-//     sessionStorage.setItem('value' , arr);
-//     console.log(arr);
-//   }
-//    console.log(sessionStorage.getItem('value'));
-//    console.log();
+buttonLeft.addEventListener('click', function(){
+  document.getElementById('slider').scrollLeft -= 180
+})
+
+buttonRight.addEventListener('click', function(){
+  document.getElementById('slider').scrollLeft += 180
+})
+// function animm(){ 
+//   if($('#map').hasClass("animat")){
+      
+//   }else{
+//   simplemaps_countrymap_mapdata.main_settings.width = '500';
+
+// }
+
+// }; 
+
+setTimeout(nnnd, 500) 
