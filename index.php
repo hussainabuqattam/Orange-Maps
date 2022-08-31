@@ -82,6 +82,13 @@
             <div class="panel panel-default new_checkbox">
                           <!-- List group -->
                 <ul class="list-group">
+                <li class="list-group-item">
+                       All ODC
+                    <div class="material-switch pull-right">
+                            <input id="someSwitchOption" name="allswitch" type="checkbox" checked="checked"/>
+                            <label for="allswitch" class="label-default" style="background-color:#085ebd;"></label>
+                        </div>
+                    </li>
                     <li class="list-group-item">
                       Coding School                        
                     <div class="material-switch pull-right">
@@ -113,7 +120,7 @@
                     <li class="list-group-item">
                        AI Incubator                     
                           <div class="material-switch pull-right">
-                            <input id="someSwitchOptionWarning" name="someSwitchOption001" type="checkbox"/>
+                            <input id="someSwitchOptionWarning" name="someSwitchOption001" type="checkbox" />
                             <label for="someSwitchOptionWarning" class="label-warning" style="background-color:#ffb400;"></label>
                         </div>
                     </li>
