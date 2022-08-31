@@ -32,6 +32,7 @@ if(isset($_GET['getAllLocation'])) {
         $data[$marker['id']]['lng'] = str_replace("/", "", substr($marker['location'], strpos($marker['location'], "/")));
         $data[$marker['id']]['name'] = $marker['governorate'];
         $data[$marker['id']]['id'] = $marker['id'];
+        $data[$marker['id']]['orange_section_id'] = $marker['orange_section_id'];
     }
 
     echo json_encode($data);
