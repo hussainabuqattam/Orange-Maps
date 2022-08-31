@@ -276,6 +276,22 @@ function setcolor(){
   });
 
 }
+
+$("#allswitch").on("click", function() {
+  var arry = $.map(simplemaps_countrymap_mapdata.locations, function(value, index){
+    return [value];
+  });
+
+  if(this.checked == true){
+    arry.forEach((map) => {
+        $(".sm_location_" + map.id).fadeIn();
+    })
+  }else{
+    arry.forEach((map) => {
+      $(".sm_location_" + map.id).fadeOut();
+    })
+  }
+});
 setTimeout(setcolor, 50);
 //checkbox marker
 var checkarray = [];
@@ -287,7 +303,6 @@ for(var checkbox of checkboxes){
     }else{
       checkarray = checkarray.filter(c => c !== this.value);
     }
-  
       $.ajax({
         method : "get",
         url : "ajax.php",
@@ -309,6 +324,12 @@ for(var checkbox of checkboxes){
               })
         }
       });
+
+      if(checkarray.length === 0){
+        
+      }else{
+        $("#allswitch").attr("checked", false);
+      }
   })
 }
 //modal + animation
@@ -335,19 +356,19 @@ function modalshow () {
                   data:{locationid:locationIndex},
                   success:function(result) {
                       result = JSON.parse(result);
-                      $('#slide1 img').attr('src','admin/img/' + result.image1);
-                      $('#slide2 img').attr('src','admin/img/' + result.image2);
-                      $('#slide3 img').attr('src','admin/img/' + result.image3);
-                      $('#slide4 img').attr('src','admin/img/' + result.image4);
-                      $('#slide5 img').attr('src','admin/img/' + result.image5);
-                      //small img
-                      $('#smallslide1 img').attr('src','admin/img/' + result.image1);
-                      $('#smallslide2 img').attr('src','admin/img/' + result.image2);
-                      $('#smallslide3 img').attr('src','admin/img/' + result.image3);
-                      $('#smallslide4 img').attr('src','admin/img/' + result.image4);
-                      $('#smallslide5 img').attr('src','admin/img/' + result.image5);
+                      console.log(result);
+                      $('#slide1').attr('src','admin/img/' + result.image1);
+                      $('#featured').attr('src','admin/img/' + result.image1);
+                      $('#slide2').attr('src','admin/img/' + result.image2);
+                      $('#slide3').attr('src','admin/img/' + result.image3);
+                      $('#slide4').attr('src','admin/img/' + result.image4);
+                      $('#slide5').attr('src','admin/img/' + result.image5);
+                      $('#slide6').attr('src','admin/img/' + result.image6);
+
                       //description
                       $('#descriptionslide').text(result.description);
+                      $('#orangeSectionName').text(result.orangeSectionName);
+                      $('#location').text(result.location);
                       
                   }
                 });

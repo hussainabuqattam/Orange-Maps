@@ -47,20 +47,19 @@
 		
 
 		<div class="column">
-			<img id=featured src="map_images/images (1).jpg">
+			<img id=featured>
 
 			<div id="slide-wrapper" >
 				<img id="slideLeft" class="arrow" src="map_images/arrow-left.png">
 
 				<div id="slider">
-					<img class="thumbnail active" src="map_images/download.jpg">
-					<img class="thumbnail" src="map_images/images.jpg">
-					<img class="thumbnail" src="map_images/images (3).jpg">
+					<img id="slide1" class="thumbnail active" >
+					<img id="slide2" class="thumbnail" >
+					<img id="slide3" class="thumbnail" >
 
-					<img class="thumbnail" src="map_images/download.png">
-					<img class="thumbnail" src="map_images/images (1).jpg">
-					<img class="thumbnail" src="map_images/images (3).jpg">
-					<img class="thumbnail" src="map_images/download.png">
+					<img id="slide4" class="thumbnail" >
+					<img id="slide5" class="thumbnail" >
+					<img id="slide6" class="thumbnail" >
 				</div>
 
 				<img id="slideRight" class="arrow" src="map_images/arrow-right.png">
@@ -68,9 +67,10 @@
 		</div>
 
 		<div class="column text-colomss" >
-			<h1 style="color:#ff7900;">Awesome Shoes</h1>
+			<h1 style="color:#ff7900;" id="orangeSectionName"></h1>
+      <span id="location"></span>
 			<hr>
-			<p style="color:#eee;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+			<p style="color:#eee;" id="descriptionslide"></p>
 		</div>
 
 	</div>
@@ -87,8 +87,8 @@
                 <li class="list-group-item">
                        All ODC
                     <div class="material-switch pull-right">
-                            <input id="someSwitchOption" name="allswitch" type="checkbox" checked="checked"/>
-                            <label for="allswitch" class="label-default" style="background-color:#085ebd;"></label>
+                            <input id="allswitch" name="allswitch" type="checkbox" checked="checked"/>
+                            <label id="allswitch2" for="allswitch" class="label-default" style="background-color:#085ebd;"></label>
                         </div>
                     </li>
                 <?php if(!empty($orange_section)): foreach ($orange_section as $index => $item): ?>

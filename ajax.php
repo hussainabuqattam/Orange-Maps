@@ -6,7 +6,7 @@ include "include/init.php";
 
 if(isset($_GET['locationid'])){
     $location = $_GET['locationid'];
-    $stmt = $connect->prepare("SELECT * FROM marker WHERE id = ?");
+    $stmt = $connect->prepare("SELECT marker.*, orange_section.name as orangeSectionName FROM marker INNER JOIN orange_section ON orange_section.id = marker.orange_section_id WHERE marker.id = ?");
     $stmt->execute([$location]);
     $locationData = $stmt->fetch();
 
@@ -16,6 +16,8 @@ if(isset($_GET['locationid'])){
     $data["image4"] = $locationData['image4'];
     $data["image5"] = $locationData['image5'];
     $data["image6"] = $locationData['image6'];
+    $data["location"] = $locationData['full_address'];
+    $data["orangeSectionName"] = $locationData['orangeSectionName'];
     $data["description"] = $locationData['description'];
 
     echo json_encode($data);

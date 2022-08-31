@@ -11,7 +11,6 @@
         $stmt->execute();
         $orange_section = $stmt->fetchAll();
 
-
         if(isset($_POST['save'])){
 
             $stmt = $connect->prepare("SELECT * FROM marker WHERE id = ?");

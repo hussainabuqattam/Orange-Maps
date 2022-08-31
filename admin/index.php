@@ -1,6 +1,7 @@
 <?php
     $titlePage = "Admin login";
     include "include/init.php";
+    
     include "include/header.php";
     include "include/nav.php";
 
@@ -251,7 +252,7 @@
                 var country = "";
                 console.log(result);
                 result.forEach((city) =>{
-                    if(city.admin_name === name){
+                    if(city.admin_name === name ){
                         country += `<option value="${city.lat + "/" + city.lng}">${city.city}</option>`;
                     }
                 });
