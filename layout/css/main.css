@@ -286,7 +286,7 @@ height: 35px;
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(500%, 130%);
+  transform: translate(500%, 120%);
 }
 
 .new_checkbox ul{width:150%}
